@@ -1,6 +1,7 @@
 ﻿namespace QuickMachine.Core
 
    open System
+   open System.Globalization
 
    /// Angle type pass radian value to create
    [<Struct; CustomComparison; CustomEquality>]
@@ -31,7 +32,7 @@
       override this.GetHashCode() = hash this.Radians
 
       /// Print radians
-      override this.ToString() = this.Radians.ToString()
+      override this.ToString() = this.Radians.ToString(CultureInfo.InvariantCulture)
 
       // #endregion
 
@@ -72,8 +73,6 @@
       static member (*) (value:double, a:Angle ) = Angle (a.Radians * value)
       /// Divide angle by value
       static member (/) (a:Angle, value:double) = Angle (a.Radians / value)
-      /// Divide angle by value
-      static member (/) (value:double, a:Angle ) = Angle (a.Radians / value)
       
       /// a < b when b is within 180 degrees and they are not equal
       static member op_LessThan (a:Angle, b:Angle) = (a :> IComparable).CompareTo(b) < 0

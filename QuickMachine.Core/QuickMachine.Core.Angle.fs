@@ -49,7 +49,7 @@
                   | (0,0) | (1,1) -> this.Radians.CompareTo obj.Radians
                   | (0, 1) -> if (obj.Radians - this.Radians) - Utilities.EPSILON < Math.PI then -1 else 1
                   | (1, 0) -> if (this.Radians - obj.Radians) + Utilities.EPSILON < Math.PI then 1 else -1
-                  | (_, _) -> invalidArg "obj" "something terrible has happened"
+                  | (_, _) -> invalidArg "obj" "not a valid Angle"
 
       interface IComparable with
          member this.CompareTo obj = 
